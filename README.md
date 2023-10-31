@@ -87,15 +87,15 @@ RegisterNumber:  212221230011
 
 ### UPcounter:
 ```
-module upcounter(A,clk);
+module upcounters(clk,A);
 output reg [3:0]A;
 input clk;
-always@(posedge clk)
+always @(posedge clk)
 begin
-A[0]=((((A[1])&(A[2]))&A[3])^A[0]);
-A[1]=(((A[2])&(A[3]))^A[1]);
-A[2]=((A[3])^A[2]);
-A[3]=1^A[3];
+	A[3]=(((A[0])&(A[1])&(A[2]))^A[3]);
+	A[2]=(((A[0])&(A[1]))^A[2]);
+	A[1]=(A[0])^A[1];
+	A[0]=A[0]^1;
 end
 endmodule
 ```
@@ -135,8 +135,8 @@ endmodule
 ### TIMING DIGRAMS FOR COUNTER  
 
 ### Upcounter Waveform:
+![image](https://github.com/SOMEASVAR/Exp-7-Synchornous-counters-/assets/93434149/efc32b5a-baba-4a23-b0f2-324cf19c8865)
 
-![image](https://github.com/SOMEASVAR/Exp-7-Synchornous-counters-/assets/93434149/fbfa44d0-a53d-414a-b9d3-f4b849bedcfa)
 
 ### Downcounter Waveform:
 
